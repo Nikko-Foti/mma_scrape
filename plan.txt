@@ -1,0 +1,8 @@
+# have variables for each weightclass that have empty arrays assigned to them.
+# run scraper that will go to UFC.com rankings page and extract ranked fighters and push them into their corresponding array.
+# each weight class array will have a list of fighters that are ordered by ranking.
+# once those lists are filled another scraper will start and will use those lists to search UFC fighters sherdog pages. After each scrape it will insert fighter into their
+    corresponding weight class table.
+
+# there will be one keyspace called weightclasses
+# there will be a table for each weight class 
