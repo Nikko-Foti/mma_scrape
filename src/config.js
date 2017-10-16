@@ -35,7 +35,7 @@ const queries = {
 }
 
 var dbConstants = {
-    endpoint : 'localhost:9042',
+    endpoint : '192.168.2.66:9042',
     keyspace : 'weight_classes', 
 }
 
