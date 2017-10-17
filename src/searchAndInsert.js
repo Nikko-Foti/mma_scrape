@@ -107,23 +107,25 @@ function searchAndQueryFighters(fighters) {
     function loop() {
         const random = Math.floor(Math.random() * 120000) + 60000;
         setTimeout(() => {
-            const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
-            const fighterToBeSearched = fighters[i];
-            mma.fighter(fighterName, function(data) {
-                const params = createParams(data, fighterToBeSearched);
-                const query = getQuery(params[11]);
-                console.log('Here are the params');              
-                console.log(params);            
-                client.execute(query, params, { prepare: true }, (err, response) => {
-                    if (err) {
-                        console.log(`Failed to execute query: ${err}`);
-                        // sendError(res, 500, err, 'FAILURE');
-                    } else {
-                        console.log('Query was executed successfully.', response);
-                        // sendResponse(res, 'OK');
-                    }
+            if (fighter[i].first_name[1] == fighter[i].first_name[1].toUpperCase() || fighter[i].last_name[1] == fighter[i].last_name[1].toUpperCase()) {
+                const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
+                const fighterToBeSearched = fighters[i];
+                mma.fighter(fighterName, function(data) {
+                    const params = createParams(data, fighterToBeSearched);
+                    const query = getQuery(params[11]);
+                    console.log('Here are the params');              
+                    console.log(params);            
+                    client.execute(query, params, { prepare: true }, (err, response) => {
+                        if (err) {
+                            console.log(`Failed to execute query: ${err}`);
+                            // sendError(res, 500, err, 'FAILURE');
+                        } else {
+                            console.log('Query was executed successfully.', response);
+                            // sendResponse(res, 'OK');
+                        }
+                    });
                 });
-            });
+            }
             i++;
             if (i <= fighters.length) {
                 loop();
