@@ -107,7 +107,11 @@ function searchAndQueryFighters(fighters) {
     function loop() {
         const random = Math.floor(Math.random() * 300000) + 120000;
         setTimeout(() => {
-            if (!(fighters[i].first_name[1] == fighters[i].first_name[1].toUpperCase() || fighters[i].last_name[1] == fighters[i].last_name[1].toUpperCase())) {
+            if (!(fighters[i].first_name[1] == fighters[i].first_name[1].toUpperCase() || 
+                fighters[i].last_name[1] == fighters[i].last_name[1].toUpperCase()) || 
+                fighters[i].first_name.length < 2 ||
+                fighters[i].last_name.length < 2
+            ) {
                 const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
                 const fighterToBeSearched = fighters[i];
                 mma.fighter(fighterName, function(data) {
