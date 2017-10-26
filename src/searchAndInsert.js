@@ -1,7 +1,11 @@
 const axios = require('axios');
 const mma = require('mma');
 const { queries } = require('./config.js');
-const { getCassandraClient, sendError, sendResponse } = require('./commonUtil.js');
+const { 
+    getCassandraClient, 
+    sendError, 
+    sendResponse 
+} = require('./commonUtil.js');
 
 function normalizeInts(searchResults) {
     const wins = searchResults.wins;

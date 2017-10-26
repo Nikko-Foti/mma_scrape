@@ -1,4 +1,4 @@
-FROM node:latest
+FROM hypriot/rpi-node
 
 # Create app directory
 RUN mkdir -p /usr/src/app
