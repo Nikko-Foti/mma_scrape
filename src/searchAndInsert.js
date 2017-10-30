@@ -37,6 +37,11 @@ function normalizeInts(searchResults) {
 }
 
 function createParams(searchFighter, fighterObject) {
+    // Need to parse searchFighter.fights.url. Fights is an array. So I am going to have to loop through it and extract the name of the event out of the url string.
+    searchFighter.fights.forEach((fight) => {
+        fight.event = fight.url.slice(8, -6);
+    });
+    // Need to write test for this method.
     const searchResults = normalizeInts(searchFighter);
     return [
         fighterObject.first_name,

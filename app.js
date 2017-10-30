@@ -7,7 +7,6 @@ const { getFighters } = require('./src/searchAndInsert');
 
 getFighters();
 
-
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
