@@ -117,9 +117,9 @@ function searchAndQueryFighters(fighters) {
         const random = Math.floor(Math.random() * 300000) + 120000;
         setTimeout(() => {
             if (!(fighters[i].first_name[1] == fighters[i].first_name[1].toUpperCase() || 
-                fighters[i].last_name[1] == fighters[i].last_name[1].toUpperCase()) || 
+                fighters[i].last_name[1] == fighters[i].last_name[1].toUpperCase() || 
                 fighters[i].first_name.length < 2 ||
-                fighters[i].last_name.length < 2
+                fighters[i].last_name.length < 2)
             ) {
                 const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
                 const fighterToBeSearched = fighters[i];
@@ -131,10 +131,8 @@ function searchAndQueryFighters(fighters) {
                     client.execute(query, params, { prepare: true }, (err, response) => {
                         if (err) {
                             console.log(`Failed to execute query: ${err}`);
-                            // sendError(res, 500, err, 'FAILURE');
                         } else {
                             console.log('Query was executed successfully.', response);
-                            // sendResponse(res, 'OK');
                         }
                     });
                 });
