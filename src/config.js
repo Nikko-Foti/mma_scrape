@@ -36,7 +36,7 @@ const queries = {
 
 var dbConstants = {
     endpoint : '192.168.2.66:9042',
-    keyspace : 'classes', 
+    keyspace : 'weight_classes_two', 
 }
 
 module.exports = {
