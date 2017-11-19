@@ -114,7 +114,7 @@ function searchAndQueryFighters(fighters) {
     const client = getCassandraClient();
     
     function loop() {
-        const random = Math.floor(Math.random() * 360000) + 180000;
+        const random = Math.floor(Math.random() * 600000) + 300000;
         setTimeout(() => {
             try {
                 const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
