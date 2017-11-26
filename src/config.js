@@ -33,10 +33,10 @@ const queries = {
         ' (first_name, last_name, nickname, association, hometown, nationality, age, height, college, degree, style, weight_class, rank, wins, losses, draws, strikes, takedowns, thumbnail, belt_thumbnail, left_full_body_image, right_full_body_image, profile_image, fights)' + 
         ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
 }
-
+// 192.168.2.66
 var dbConstants = {
-    endpoint : '192.168.2.66:9042',
-    keyspace : 'weight_classes_two', 
+    endpoint : 'localhost:9042',
+    keyspace : 'classes', 
 }
 
 module.exports = {
