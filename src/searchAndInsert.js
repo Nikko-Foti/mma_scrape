@@ -114,7 +114,8 @@ function searchAndQueryFighters(fighters) {
     const client = getCassandraClient();
     
     function loop() {
-        const random = i % 75 == 0 ? Math.floor(Math.random() * 10800000) + 7200000 : Math.floor(Math.random() * 420000) + 300000;
+        // Every 50 searches the scraper will stop for 10-12hrs.
+        const random = i % 50 == 0 ? Math.floor(Math.random() * 43200000) + 36000000 : Math.floor(Math.random() * 600000) + 300000;
         setTimeout(() => {
             try {
                 const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
