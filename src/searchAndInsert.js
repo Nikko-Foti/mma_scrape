@@ -115,7 +115,7 @@ function searchAndQueryFighters(fighters) {
     
     function loop() {
         // Every 50 searches the scraper will stop for 10-12hrs.
-        const random = i % 50 == 0 ? Math.floor(Math.random() * 43200000) + 36000000 : Math.floor(Math.random() * 600000) + 300000;
+        const random = i % 50 == 0 ? Math.floor(Math.random() * 54000000) + 36000000 : Math.floor(Math.random() * 2700000) + 1500000;
         setTimeout(() => {
             try {
                 const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
