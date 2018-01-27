@@ -117,24 +117,32 @@ function searchAndQueryFighters(fighters) {
         // Every 50 searches the scraper will stop for 10-12hrs.
         const random = i % 50 == 0 ? Math.floor(Math.random() * 54000000) + 36000000 : Math.floor(Math.random() * 2700000) + 1500000;
         setTimeout(() => {
+            // Assigning current fighter name of current fighter object being iterated over to variable
+            // to be searched via mma.fighter method.
+            const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
+            // fighterToBeSearched variable is an object used to create Cassandra insertion params.
+            const fighterToBeSearched = fighters[i];
             try {
-                const fighterName = `${fighters[i].first_name} ${fighters[i].last_name}`;
-                const fighterToBeSearched = fighters[i];
-                mma.fighter(fighterName, function(data) {
+                // Search for fighter with mma.fighter method.                
+                mma.fighter(fighterName, (data) => {
                     const params = createParams(data, fighterToBeSearched);
                     const query = getQuery(params[11]);
                     console.log('Here are the params');              
-                    console.log(params);            
+                    console.log(params);
+                    // Insert fighter data into Cassandra.
                     client.execute(query, params, { prepare: true }, (err, response) => {
                         if (err) {
                             console.log(`Failed to execute query: ${err}`);
-                        } else {
-                            console.log('Query was executed successfully.', response);
-                        }
+                        } 
+                        console.log('Query was executed successfully.', response);
                     });
                 });
-            } catch (err) {
-                console.log(err);
+            } catch(error) {
+                console.log(`Caught this error trying to search for fighter: ${error}`);
+                // If Google blocked request, wait one day and make the request again.
+                setTimeout(() => {
+                    loop();
+                }, 86400000);
             }
             i++;
             if (i <= fighters.length) {
@@ -152,7 +160,6 @@ function getFighters() {
     const url = 'http://ufc-data-api.ufc.com/api/v3/iphone/fighters';
     axios.get(url)
         .then((fighters) => {
-            // console.log(fighters.data);
             searchAndQueryFighters(fighters.data);
         })
         .catch((err) => {

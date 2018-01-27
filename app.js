@@ -7,14 +7,14 @@ const { getFighters } = require('./src/searchAndInsert');
 
 getFighters();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// });
 
-app.get('/scrape', function(req, res) {
+// app.get('/scrape', function(req, res) {
     
-});
+// });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-});
+// app.listen(3000, function () {
+//   console.log('Example app listening on port 3000!')
+// });
