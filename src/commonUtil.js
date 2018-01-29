@@ -15,17 +15,7 @@ function sendError(res, statusCode, error, data) {
 	});
 }
 
-function getCassandraClient() {
-	return new cassandra.Client(
-		{
-			contactPoints: [dbConstants.endpoint], 
-			keyspace: [dbConstants.keyspace]
-		}
-	);
-}
-
 module.exports = {
-    getCassandraClient,
     sendResponse,
     sendError
 }

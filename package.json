@@ -13,6 +13,7 @@
     "axios": "^0.16.2",
     "cassandra-driver": "^3.2.2",
     "express": "^4.15.4",
+    "firebase-admin": "^5.8.1",
     "mma": "^0.2.0"
   },
   "devDependencies": {

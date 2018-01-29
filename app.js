@@ -1,20 +1,17 @@
 const express = require('express')
 const app = express();
+
+const admin = require('firebase-admin');
+var serviceAccount = require('./src/mma-scrape-firebase.json');
 const axios = require('axios');
 const mma = require('mma');
 
 const { getFighters } = require('./src/searchAndInsert');
 
-getFighters();
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-// });
+var db = admin.firestore();
 
-// app.get('/scrape', function(req, res) {
-    
-// });
-
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!')
-// });
+getFighters(db);
