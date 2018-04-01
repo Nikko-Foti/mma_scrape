@@ -4,14 +4,9 @@ const app = express();
 const admin = require('firebase-admin');
 var serviceAccount = require('./src/mma-scrape-firebase.json');
 const axios = require('axios');
-const mma = require('mma');
 
-const { getFighters } = require('./src/searchAndInsert');
+const { getUfcFighters } = require('./src/scrapeAndInsert');
+const { scrapeRankedUfcFighters } = require('./src/updateRankedFighters.js');
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
-
-var db = admin.firestore();
-
-getFighters(db);
+getUfcFighters();
+// scrapeRankedUfcFighters();
